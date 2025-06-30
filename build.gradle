@@ -1,0 +1,16 @@
+plugins {
+    id 'net.researchgate.release'
+    id 'java'
+}
+
+def moduleVersion = project.version.replace("-SNAPSHOT", "")
+release {
+    failOnSnapshotDependencies = true
+    versionPropertyFile = 'gradle.properties'
+    tagTemplate = 'v${version}'
+
+    git {
+        requireBranch =  null // "release-${moduleVersion}"
+        pushToRemote = 'origin'
+    }
+}
